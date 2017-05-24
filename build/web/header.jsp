@@ -4,6 +4,8 @@
     Author     : nhtoan
 --%>
 
+<%@page import="model.Category"%>
+<%@page import="dao.CategoryDAO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -13,6 +15,9 @@
     </head>
     <body>
         <!--header-->
+        <%
+            CategoryDAO categoryDao = new CategoryDAO();
+        %>
         <div class="header">
             <div class="header-top">
                 <div class="container">	
@@ -76,14 +81,15 @@
                         <a class="toggleMenu" href="#">Menu</a>
                         <ul class="nav">
                             <li class="active"><a href="index.jsp"><i> </i>Desktops</a></li>
-                            <li ><a href="#" >Laptops & Notebooks</a>
+                            <li ><a href="#" >Danh muc</a>
                                 <ul class="drop">
-                                    <li><a href="products.html">Sony(2)</a></li>
-                                    <li><a href="products.html">Android(4)</a></li>
-                                    <li><a href="products.html">Apple(7)</a></li>
-                                    <li><a href="products.html">Acer(53)</a></li>
-                                    <li><a href="products.html">HP(78)</a></li>
-                                    <li><a href="products.html">Intel(5)</a></li>
+                                    <%
+                                        for (Category c : categoryDao.getListCategory()) {
+                                    %>
+                                    <li><a href="product.jsp?category=<%=c.getCategoryID() %>"><%=c.getCategoryName() %></a></li>
+                                        <%
+                                            }
+                                        %>
                                 </ul>
                             </li> 						
                             <li><a href="products.html" >  Tablets</a></li>            
