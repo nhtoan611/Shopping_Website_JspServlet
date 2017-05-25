@@ -87,11 +87,11 @@
                         %>
                             <div class="col-md-3 md-col">
                                 <div class="col-md">
-                                    <a href="single.html"><img  src="<%=p.getProductImage() %>" alt="<%=p.getProductName()%>" /></a>	
+                                    <a href="single.jsp?productID=<%=p.getProductID() %>"><img  src="<%=p.getProductImage() %>" alt="<%=p.getProductName()%>" /></a>	
                                     <div class="top-content">
-                                        <h5><a href="single.html"><%=p.getProductName() %></a></h5>
+                                        <h5><a href="single.jsp?productID=<%=p.getProductID() %>"><%=p.getProductName() %></a></h5>
                                         <div class="white">
-                                            <a href="single.html" class="hvr-shutter-in-vertical hvr-shutter-in-vertical2 ">ADD TO CART</a>
+                                            <a href="single.jsp?productID=<%=p.getProductID() %>" class="hvr-shutter-in-vertical hvr-shutter-in-vertical2 ">ADD TO CART</a>
                                             <p class="dollar"><span class="in-dollar">$</span><span><%=p.getProductPrice() %></span></p>
                                             <div class="clearfix"></div>
                                         </div>
