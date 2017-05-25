@@ -4,6 +4,7 @@
     Author     : nhtoan
 --%>
 
+<%@page import="model.Users"%>
 <%@page import="model.Category"%>
 <%@page import="dao.CategoryDAO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -17,6 +18,10 @@
         <!--header-->
         <%
             CategoryDAO categoryDao = new CategoryDAO();
+            Users users=null;
+            if(session.getAttribute("users")!=null){
+                users=(Users) session.getAttribute("users");
+            }
         %>
         <div class="header">
             <div class="header-top">
@@ -27,6 +32,9 @@
                         </div>
                         <div class="header-in">
                             <ul class="icon1 sub-icon1">
+                                <%if(users!=null){ %>
+                                <li  ><a href="wishlist.html"><%=users.getUserEmail() %></a> </li>
+                                <% } %>
                                 <li  ><a href="wishlist.html">WISH LIST (0)</a> </li>
                                 <li  ><a href="account.html">  MY ACCOUNT</a></li>
                                 <li ><a href="#" > SHOPPING CART</a></li>

@@ -69,8 +69,8 @@
                         <p>Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id </p>				
                         <ul class="social ">
                             <li><span><i > </i>9, Minh Khai, Ha Noi</span></li>
-                            <li><span><i class="down"> </i>nhtoan611@gmail.com</span></li>
-                            <li><a href="mailto:info@example.com"><i class="mes"> </i>+ 84 969220842</a></li>
+                            <li><span><i class="mes"> </i>+ 84 969220842</span></li>
+                            <li><a href="mailto:info@example.com"><i class="down"> </i>nhtoan611@gmail.com</a></li>
                         </ul>
                     </div>
                     <div class="col-md-6 contact-top">

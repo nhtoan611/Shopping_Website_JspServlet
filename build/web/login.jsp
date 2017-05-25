@@ -66,19 +66,23 @@
         </script>
     </head>
     <body>
+
         <jsp:include page="header.jsp"></jsp:include>
             <div class="container">
                 <div class="account">
                     <h2 class="account-in">Login</h2>
-                    <form>
+                    <form action="UsersServlet" method="POST">	
                         <div>
-                            <span>UserName*</span>
-                            <input type="text">
-                        </div> 	
+                            <span class="word">Username*</span>
+                            <input type="text" name="email" id="email"> 
+                            <span id="user-result"></span>
+                        </div>
                         <div> 
                             <span class="word">Password*</span>
-                            <input type="password">
-                        </div>				
+                            <input type="password" name="pass">
+                            <span></span>
+                        </div>	
+                        <input type="hidden" value="login" name="command">
                         <input type="submit" value="Login"> 
                     </form>
                 </div>
