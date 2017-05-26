@@ -4,6 +4,9 @@
     Author     : nhtoan
 --%>
 
+<%@page import="model.Item"%>
+<%@page import="java.util.Map"%>
+<%@page import="model.Cart"%>
 <%@page import="model.Users"%>
 <%@page import="model.Category"%>
 <%@page import="dao.CategoryDAO"%>
@@ -21,6 +24,11 @@
             Users users=null;
             if(session.getAttribute("users")!=null){
                 users=(Users) session.getAttribute("users");
+            }
+            Cart cart=(Cart) session.getAttribute("cart");
+            if(cart==null){
+                cart=new Cart();
+                session.setAttribute("cart", cart);
             }
         %>
         <div class="header">
@@ -41,33 +49,27 @@
                                 <li > <a href="checkout.html" >CHECKOUT</a> </li>	
                                 <li><div class="cart">
                                         <a href="#" class="cart-in"> </a>
-                                        <span> 0</span>
+                                        <span><%=cart.countItem() %></span>
                                     </div>
                                     <ul class="sub-icon1 list">
-                                        <h3>Recently added items(2)</h3>
+                                        <h3>Recently added items</h3>
                                         <div class="shopping_cart">
+                                            
+                                            <%for(Map.Entry<Long, Item> list: cart.getCartItems().entrySet()){ %>
                                             <div class="cart_box">
                                                 <div class="message">
                                                     <div class="alert-close"> </div> 
-                                                    <div class="list_img"><img src="images/14.jpg" class="img-responsive" alt=""></div>
-                                                    <div class="list_desc"><h4><a href="#">velit esse molestie</a></h4>1 x<span class="actual">
-                                                            $12.00</span></div>
+                                                    <div class="list_img"><img src="<%=list.getValue().getProduct().getProductImage()%>" class="img-responsive" alt=""></div>
+                                                    <div class="list_desc"><h4><a href="CartServlet?command=remove&productID=<%=list.getValue().getProduct().getProductID() %>"><%=list.getValue().getProduct().getProductName() %></a></h4><%=list.getValue().getQuantity() %> x<span class="actual">
+                                                            <%=list.getValue().getProduct().getProductPrice()%></span></div>
                                                     <div class="clearfix"></div>
                                                 </div>
                                             </div>
-                                            <div class="cart_box1">
-                                                <div class="message1">
-                                                    <div class="alert-close1"> </div> 
-                                                    <div class="list_img"><img src="images/15.jpg" class="img-responsive" alt=""></div>
-                                                    <div class="list_desc"><h4><a href="#">velit esse molestie</a></h4>1 x<span class="actual">
-                                                            $12.00</span></div>
-                                                    <div class="clearfix"></div>
-                                                </div>
-                                            </div>
+                                            <%} %>
                                         </div>
                                         <div class="total">
                                             <div class="total_left">CartSubtotal : </div>
-                                            <div class="total_right">$250.00</div>
+                                            <div class="total_right"><%=cart.totalCart() %></div>
                                             <div class="clearfix"> </div>
                                         </div>
                                         <div class="login_buttons">

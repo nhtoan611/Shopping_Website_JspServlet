@@ -4,6 +4,7 @@
     Author     : nhtoan
 --%>
 
+<%@page import="model.Cart"%>
 <%@page import="model.Product"%>
 <%@page import="dao.ProductDao"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -74,6 +75,12 @@
             if(request.getParameter("category")!=null){
                 category_id=request.getParameter("category");
             }
+            
+            Cart cart=(Cart) session.getAttribute("cart");
+            if(cart==null){
+                cart=new Cart();
+                session.setAttribute("cart", cart);
+            }
         %>
         <jsp:include page="header.jsp"></jsp:include>
 
@@ -91,7 +98,7 @@
                                     <div class="top-content">
                                         <h5><a href="single.jsp?productID=<%=p.getProductID() %>"><%=p.getProductName() %></a></h5>
                                         <div class="white">
-                                            <a href="single.jsp?productID=<%=p.getProductID() %>" class="hvr-shutter-in-vertical hvr-shutter-in-vertical2 ">ADD TO CART</a>
+                                            <a href="CartServlet?command=plus&productID=<%=p.getProductID() %>" class="hvr-shutter-in-vertical hvr-shutter-in-vertical2 ">ADD TO CART</a>
                                             <p class="dollar"><span class="in-dollar">$</span><span><%=p.getProductPrice() %></span></p>
                                             <div class="clearfix"></div>
                                         </div>
