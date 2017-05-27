@@ -10,6 +10,7 @@ import dao.BillDetailDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Map;
 import javax.servlet.ServletException;
@@ -22,6 +23,7 @@ import model.BillDetail;
 import model.Cart;
 import model.Item;
 import model.Users;
+import tools.SendMail;
 
 /**
  *
@@ -47,6 +49,7 @@ public class CheckOutServlet extends HttpServlet {
         Cart cart = (Cart) session.getAttribute("cart");
         Users users = (Users) session.getAttribute("user");
         try {
+            ArrayList<String> bd=new ArrayList<>();
             long ID = new Date().getTime();
             Bill bill = new Bill();
             bill.setBillID(ID);
@@ -61,7 +64,16 @@ public class CheckOutServlet extends HttpServlet {
                         list.getKey(),
                         list.getValue().getProduct().getProductPrice(),
                         list.getValue().getQuantity()));
+                
+                bd.add(list.getValue().getProduct().getProductName());
             }
+            SendMail sm = new SendMail();
+            String text="Hello, "+users.getUserEmail()+"\nProduct List: ";
+            for( String bdDetail: bd){
+                text+="\n"+bdDetail;
+            }
+            text+="\nTotal: "+cart.totalCart();
+            sm.sendMail(users.getUserEmail(), "Shopping Details", text);
             cart = new Cart();
             session.setAttribute("cart", cart);
         } catch (Exception e) {
