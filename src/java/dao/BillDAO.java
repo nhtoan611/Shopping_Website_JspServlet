@@ -7,6 +7,9 @@ package dao;
 
 import connect.DBConnect;
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import model.Bill;
 
 /**
@@ -14,7 +17,8 @@ import model.Bill;
  * @author nhtoan
  */
 public class BillDAO {
-     public void insertBill(Bill bill) throws SQLException {
+
+    public void insertBill(Bill bill) throws SQLException {
         Connection connection = DBConnect.getConnection();
         String sql = "INSERT INTO bill VALUES(?,?,?,?,?,?)";
         PreparedStatement ps = connection.prepareCall(sql);
@@ -26,7 +30,31 @@ public class BillDAO {
         ps.setTimestamp(6, bill.getDate());
         ps.executeUpdate();
     }
-    
+
+    public ArrayList<Bill> getListBill() {
+        try {
+            Connection connection = DBConnect.getConnection();
+            String sql = "SELECT * FROM bill";
+            PreparedStatement ps = connection.prepareCall(sql);
+            ResultSet rs = ps.executeQuery();
+            ArrayList<Bill> list = new ArrayList<>();
+            while (rs.next()) {
+                Bill bill = new Bill();
+                bill.setBillID(rs.getLong("bill_id"));
+                bill.setUserID(rs.getLong("user_id"));
+                bill.setTotal(rs.getDouble("total"));
+                bill.setPayment(rs.getString("payment"));
+                bill.setAddress(rs.getString("address"));
+                bill.setDate(rs.getTimestamp("date"));
+                list.add(bill);
+            }
+            return list;
+        } catch (SQLException ex) {
+            Logger.getLogger(BillDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+
 //    public static void main(String[] args) throws SQLException {
 //        BillDAO billdao=new BillDAO();
 //        Bill bill=new Bill(0, 0, 0, "s", "s", new Timestamp(System.currentTimeMillis()));
