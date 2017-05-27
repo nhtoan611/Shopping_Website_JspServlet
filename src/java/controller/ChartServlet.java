@@ -26,7 +26,6 @@ public class ChartServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         request.setAttribute("listItem", chartDAO.getAll());
-        request.setAttribute("chartDAO", chartDAO);
         RequestDispatcher rd = getServletContext().getRequestDispatcher("/admin/manager_chart.jsp");
         rd.forward(request, response);
     }
