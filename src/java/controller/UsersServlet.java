@@ -45,13 +45,13 @@ public class UsersServlet extends HttpServlet {
                 users.setUserPass(request.getParameter("pass"));
                 users.setUserRole(false);
                 usersDAO.insertUser(users);       
-                session.setAttribute("users", users);
+                session.setAttribute("user", users);
                 url = "/index.jsp";
                 break;
             case "login":
                 users= usersDAO.login(request.getParameter("email"), request.getParameter("pass"));
                 if(users!=null){
-                    session.setAttribute("users", users);
+                    session.setAttribute("user", users);
                     url = "/index.jsp";
                 }else{
                     url = "/login.jsp";

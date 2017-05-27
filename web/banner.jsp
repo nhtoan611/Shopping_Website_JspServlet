@@ -3,7 +3,6 @@
     Created on : May 23, 2017, 10:06:20 PM
     Author     : nhtoan
 --%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -12,6 +11,7 @@
         <title>banner</title>
     </head>
     <body>
+
         <div class="banner-mat">
             <div class="container">
                 <div class="banner">
@@ -44,5 +44,6 @@
                 <!-- //slider-->
             </div>
         </div>
+
     </body>
 </html>
