@@ -20,6 +20,10 @@
         <servlet-name>ManagerCategoryServlet</servlet-name>
         <servlet-class>controller.ManagerCategoryServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ChartServlet</servlet-name>
+        <servlet-class>controller.ChartServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>CheckEmailServlet</servlet-name>
         <url-pattern>/CheckEmailServlet</url-pattern>
@@ -39,6 +43,10 @@
     <servlet-mapping>
         <servlet-name>ManagerCategoryServlet</servlet-name>
         <url-pattern>/ManagerCategoryServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ChartServlet</servlet-name>
+        <url-pattern>/ChartServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
