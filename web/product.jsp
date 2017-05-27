@@ -4,6 +4,7 @@
     Author     : nhtoan
 --%>
 
+<%@page import="java.util.ArrayList"%>
 <%@page import="model.Cart"%>
 <%@page import="model.Product"%>
 <%@page import="dao.ProductDao"%>
@@ -72,8 +73,10 @@
         <%
             ProductDao productDao = new ProductDao();
             String category_id="";
+            long categoryID=0;
             if(request.getParameter("category")!=null){
                 category_id=request.getParameter("category");
+                categoryID=Long.parseLong(category_id);
             }
             
             Cart cart=(Cart) session.getAttribute("cart");
@@ -81,6 +84,21 @@
                 cart=new Cart();
                 session.setAttribute("cart", cart);
             }
+            int pages = 0, firstResult = 0, maxResult = 0, total = 0;
+            if (request.getParameter("pages") != null) {
+                pages = (int) Integer.parseInt(request.getParameter("pages"));
+            }
+            total = productDao.countProductByCategory(categoryID);
+            if (total <= 8) {
+                firstResult = 0;
+                maxResult = total;
+            }else{
+                firstResult = (pages - 1) * 8;
+                maxResult = 8;
+            }
+
+            ArrayList<Product> listProduct = productDao.getListProductByNav(
+                    categoryID, firstResult, maxResult);
         %>
         <jsp:include page="header.jsp"></jsp:include>
 
@@ -90,7 +108,7 @@
                         <h3 class="future">FEATURED</h3>
                         <div class="content-top-in">
                         <% 
-                        for(Product p:productDao.getListProductByCategory(Long.parseLong(category_id))){
+                        for(Product p:listProduct){
                         %>
                             <div class="col-md-3 md-col">
                                 <div class="col-md">
@@ -118,14 +136,12 @@
                     <!---->
 
                     <ul class="start">
-                        <li ><a href="#"><i></i></a></li>
-                        <li><span>1</span></li>
-                        <li class="arrow"><a href="#">2</a></li>
-                        <li class="arrow"><a href="#">3</a></li>
-                        <li class="arrow"><a href="#">4</a></li>
-                        <li class="arrow"><a href="#">5</a></li>
-                        <li ><a href="#"><i  class="next"> </i></a></li>
-                    </ul>
+                    <li><a href="#"><i></i></a></li>
+                    <%for(int i=1;i<=(total/8)+1;i++){%>
+                        <li class="arrow"><a href="product.jsp?category=<%=categoryID%>&pages=<%=i%>"><%=i%></a></li>
+                    <%}%>
+                    <li><a href="#"><i class="next"> </i></a></li>
+                </ul>
                 </div>
             </div>
 

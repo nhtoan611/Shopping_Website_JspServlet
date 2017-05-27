@@ -97,7 +97,7 @@
                                     <%
                                         for (Category c : categoryDao.getListCategory()) {
                                     %>
-                                    <li><a href="product.jsp?category=<%=c.getCategoryID() %>"><%=c.getCategoryName() %></a></li>
+                                    <li><a href="product.jsp?category=<%=c.getCategoryID() %>&pages=1"><%=c.getCategoryName() %></a></li>
                                         <%
                                             }
                                         %>
