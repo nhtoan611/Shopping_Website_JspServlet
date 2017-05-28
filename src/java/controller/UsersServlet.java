@@ -28,6 +28,17 @@ public class UsersServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        String url = "";
+        String command = request.getParameter("command");
+        switch(command){
+            case "logout":
+                HttpSession session = request.getSession();
+                session.invalidate();
+                response.sendRedirect("/Shop/index.jsp");
+                break;
+        }
+//        RequestDispatcher rd = getServletContext().getRequestDispatcher(url);
+//        rd.forward(request, response);
     }
 
     @Override

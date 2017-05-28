@@ -58,14 +58,13 @@ public class CartServlet extends HttpServlet {
         } catch (Exception e) {
             e.printStackTrace();
             response.sendRedirect("/Shop/index.jsp");
+//            response.sendRedirect("/index.jsp");
 
-//            RequestDispatcher rd = getServletContext().getRequestDispatcher("/index.jsp");
-//            rd.forward(request, response);
+
         }
         session.setAttribute("cart", cart);
         response.sendRedirect("/Shop/index.jsp");
+//            response.sendRedirect("/index.jsp");
 
-//        RequestDispatcher rd = getServletContext().getRequestDispatcher("/index.jsp");
-//        rd.forward(request, response);
     }
 }

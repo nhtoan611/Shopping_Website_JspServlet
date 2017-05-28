@@ -92,6 +92,8 @@
             <div class="container">
                 <div class="account">
                     <h2 class="account-in">Register</h2>
+                    <p class="wel"><a href="#">Using email to receive bill</a></p>
+                    <br>
                     <form action="UsersServlet" method="POST">		
                         <div> 	
                             <span class="word">Username*</span>

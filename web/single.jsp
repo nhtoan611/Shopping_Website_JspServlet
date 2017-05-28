@@ -4,6 +4,9 @@
     Author     : nhtoan
 --%>
 
+<%@page import="java.util.ArrayList"%>
+<%@page import="model.Category"%>
+<%@page import="dao.CategoryDAO"%>
 <%@page import="model.Product"%>
 <%@page import="dao.ProductDao"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -75,6 +78,7 @@
     </head>
     <body>
         <%
+            CategoryDAO categoryDAO = new CategoryDAO();
             ProductDao productDao = new ProductDao();
             String productID = "";
             Product product = new Product();
@@ -82,6 +86,7 @@
                 productID = request.getParameter("productID");
                 product = productDao.getProduct(Long.parseLong(productID));
             }
+
         %>
 
         <jsp:include page="header.jsp"></jsp:include>
@@ -97,18 +102,6 @@
                                     <img class="etalage_source_image img-responsive" src="<%=product.getProductImage()%>" alt="" >
                                 </a>
                             </li>
-                            <!--                                <li>
-                                                                <img class="etalage_thumb_image img-responsive" src="images/si2.jpg" alt="" >
-                                                                <img class="etalage_source_image img-responsive" src="images/si2.jpg" alt="" >
-                                                            </li>
-                                                            <li>
-                                                                <img class="etalage_thumb_image img-responsive" src="images/si.jpg" alt=""  >
-                                                                <img class="etalage_source_image img-responsive" src="images/si.jpg" alt="" >
-                                                            </li>
-                                                            <li>
-                                                                <img class="etalage_thumb_image img-responsive" src="images/si1.jpg"  alt="" >
-                                                                <img class="etalage_source_image img-responsive" src="images/si1.jpg" alt="" >
-                                                            </li>-->
                         </ul>
 
                     </div>	
@@ -117,7 +110,7 @@
                             <h4><%=product.getProductName()%></h4>
                             <div class="para-grid">
                                 <span  class="add-to">$<%=product.getProductPrice()%></span>
-                                <a href="#" class="hvr-shutter-in-vertical cart-to">Add to Cart</a>					
+                                <a href="CartServlet?command=plus&productID=<%=productID %>" class="hvr-shutter-in-vertical cart-to">Add to Cart</a>					
                                 <div class="clearfix"></div>
                             </div>
                             <h5>100 items in stock</h5>
@@ -155,48 +148,34 @@
                     </div>
                     <div class="clearfix"> </div>
                     <div class="content-top-in">
+                        <div class="single-bottom">
+                            <br><h4>Related Product</h4><br>
+                        </div>
+                         <%
+                            long categoryID = product.getCategoryID();
+                            ArrayList<Product> listProduct = productDao.getListProductByCategoryLimit(categoryID, Long.parseLong(productID));
+                            for (Product p : listProduct) {
+                        %>
                         <div class="col-md-4 top-single">
                             <div class="col-md">
-                                <img  src="images/pic8.jpg" alt="" />	
+                                <img  src="<%=p.getProductImage()%>" alt="<%=p.getProductDesription()%>" />
                                 <div class="top-content">
-                                    <h5>Mascot Kitty - White</h5>
+                                    <h5><%=p.getProductName()%></h5>
                                     <div class="white">
-                                        <a href="#" class="hvr-shutter-in-vertical hvr-shutter-in-vertical2">ADD TO CART</a>
-                                        <p class="dollar"><span class="in-dollar">$</span><span>2</span><span>0</span></p>
+                                        <a href="CartServlet?command=plus&productID=<%=p.getProductID() %>" class="hvr-shutter-in-vertical hvr-shutter-in-vertical2">ADD TO CART</a>
+                                        <p class="dollar"><span class="in-dollar">$</span><span><%=p.getProductPrice() %></span></p>
                                         <div class="clearfix"></div>
                                     </div>
                                 </div>							
                             </div>
                         </div>
-                        <div class="col-md-4 top-single">
-                            <div class="col-md">
-                                <img  src="images/pic9.jpg" alt="" />	
-                                <div class="top-content">
-                                    <h5>Mascot Kitty - White</h5>
-                                    <div class="white">
-                                        <a href="#" class="hvr-shutter-in-vertical hvr-shutter-in-vertical2">ADD TO CART</a>
-                                        <p class="dollar"><span class="in-dollar">$</span><span>2</span><span>0</span></p>
-                                        <div class="clearfix"></div>
-                                    </div>
-                                </div>							
-                            </div>
-                        </div>
-                        <div class="col-md-4 top-single-in">
-                            <div class="col-md">
-                                <img  src="images/pic10.jpg" alt="" />	
-                                <div class="top-content">
-                                    <h5>Mascot Kitty - White</h5>
-                                    <div class="white">
-                                        <a href="#" class="hvr-shutter-in-vertical hvr-shutter-in-vertical2">ADD TO CART</a>
-                                        <p class="dollar"><span class="in-dollar">$</span><span>2</span><span>0</span></p>
-                                        <div class="clearfix"></div>
-                                    </div>
-                                </div>							
-                            </div>
-                        </div>
+                        <%
+                            }
+                        %>
+
                         <div>
 
-                            <div class="fb-comments" data-href="http://localhost:8080/shop/single.jsp?productID=<%=productID%>" data-width="850" data-numposts="5"></div>      
+                            <div class="fb-comments" data-href="http://nhtoan611.jelastic.skali.net/Shop/single.jsp?productID=<%=productID%>" data-width="850" data-numposts="5"></div>      
 
                         </div>
                         <div class="clearfix"></div>
@@ -206,13 +185,16 @@
                     <div class="single-bottom">
                         <h4>Categories</h4>
                         <ul>
-                            <li><a href="#"><i> </i>Fusce feugiat</a></li>
-                            <li><a href="#"><i> </i>Mascot Kitty</a></li>
-                            <li><a href="#"><i> </i>Fusce feugiat</a></li>
-                            <li><a href="#"><i> </i>Mascot Kitty</a></li>
-                            <li><a href="#"><i> </i>Fusce feugiat</a></li>
+                            <%
+                                for (Category c : categoryDAO.getListCategory()) {
+                            %>
+                            <li><a href="product.jsp?category=<%=c.getCategoryID()%>&pages=1"><i> </i><%=c.getCategoryName()%></a></li>
+                                <%
+                                    }
+                                %>
                         </ul>
                     </div>
+
                     <div class="single-bottom">
                         <h4>Product Categories</h4>
                         <ul>
@@ -223,6 +205,7 @@
                             <li><a href="#"><i> </i> feugiat(2)</a></li>
                         </ul>
                     </div>
+
                     <div class="single-bottom">
                         <h4>Product Categories</h4>
                         <div class="product">

@@ -49,7 +49,7 @@
                     <div class="footer-middle-in">
                         <h6>Customer Service</h6>
                         <ul>
-                            <li><a href="contact.html">Contact Us</a></li>
+                            <li><a href="contact.jsp">Contact Us</a></li>
                             <li><a href="#">Returns</a></li>
                             <li><a href="#">Site Map</a></li>
                         </ul>
@@ -57,7 +57,7 @@
                     <div class="footer-middle-in">
                         <h6>My Account</h6>
                         <ul>
-                            <li><a href="account.html">My Account</a></li>
+                            <li><a href="#">My Account</a></li>
                             <li><a href="#">Order History</a></li>
                             <li><a href="wishlist.html">Wish List</a></li>
                             <li><a href="#">Newsletter</a></li>

@@ -120,7 +120,6 @@
                                             <p class="dollar"><span class="in-dollar">$</span><span><%=p.getProductPrice() %></span></p>
                                             <div class="clearfix"></div>
                                         </div>
-
                                     </div>							
                                 </div>
                             </div>

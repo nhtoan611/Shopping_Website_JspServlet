@@ -76,5 +76,4 @@ public class Product {
     public void setProductDesription(String productDesription) {
         this.productDesription = productDesription;
     }
-    
 }

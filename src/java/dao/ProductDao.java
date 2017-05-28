@@ -44,6 +44,7 @@ public class ProductDao {
         Product product = new Product();
         while (rs.next()) {
             //product.setProductID(rs.getLong("product_id"));
+            product.setCategoryID(rs.getLong("category_id"));
             product.setProductName(rs.getString("product_name"));
             product.setProductImage(rs.getString("product_image"));
             product.setProductPrice(rs.getDouble("product_price"));
@@ -83,11 +84,49 @@ public class ProductDao {
         }
         return count;  
     }
+    //San pham nen mua
+    public ArrayList<Product> getProductByPrice() throws SQLException{
+        Connection connection = DBConnect.getConnection();
+        String sql="SELECT * FROM shop.product ORDER BY product_price ASC LIMIT 4";
+        PreparedStatement ps = connection.prepareCall(sql);
+        ResultSet rs = ps.executeQuery();
+        ArrayList<Product> list = new ArrayList<>();
+        while (rs.next()) {
+            Product product = new Product();
+            product.setProductID(rs.getLong("product_id"));
+            product.setProductName(rs.getString("product_name"));
+            product.setProductImage(rs.getString("product_image"));
+            product.setProductPrice(rs.getDouble("product_price"));
+            product.setProductDesription(rs.getString("product_description"));
+            list.add(product);
+        }
+        return list;
+    }
+    
+   //Lay san pham by categoryID&limit
+    public ArrayList<Product> getListProductByCategoryLimit(long category_id, long product_id) throws SQLException {
+        Connection connection = DBConnect.getConnection();
+        String sql = "SELECT * FROM product WHERE category_id='" + category_id + "' AND product_id!='"+product_id+"' LIMIT 3";
+        PreparedStatement ps = connection.prepareCall(sql);
+        ResultSet rs = ps.executeQuery();
+        ArrayList<Product> list = new ArrayList<>();
+        while (rs.next()) {
+            Product product = new Product();
+            product.setProductID(rs.getLong("product_id"));
+            product.setProductName(rs.getString("product_name"));
+            product.setProductImage(rs.getString("product_image"));
+            product.setProductPrice(rs.getDouble("product_price"));
+            product.setProductDesription(rs.getString("product_description"));
+            list.add(product);
+        }
+        return list;
+    }
     public static void main(String[] args) throws SQLException {
         ProductDao dao = new ProductDao();
-//        for(Product p:dao.getListProductByCategory(1)){
-//            System.out.println(p.getProductID()+"   "+p.getProductName()+"   "+p.getProductDesription()+"  "+p.getProductPrice());
-//        }
-        System.out.println(dao.countProductByCategory(3));
+        
+        for(Product p:dao.getListProductByCategoryLimit(2,2)){
+            System.out.println(p.getProductID()+"   "+p.getProductName()+"   "+p.getProductDesription()+"  "+p.getProductPrice());
+        }
+//        System.out.println(dao.countProductByCategory(3));
     }
 }

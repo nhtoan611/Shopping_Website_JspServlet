@@ -51,12 +51,13 @@
                     <div class="header-in">
                         <ul class="icon1 sub-icon1">
                             <%if (users != null) {%>
-                            <li  ><a href="#"><%=users.getUserEmail()%></a> </li>
-                                <% }%>
-                            <li  ><a href="wishlist.html">WISH LIST (0)</a> </li>
-                            <li  ><a href="account.html">  MY ACCOUNT</a></li>
-                            <li ><a href="#" > SHOPPING CART</a></li>
-                            <li > <a href="checkout.html" >CHECKOUT</a> </li>	
+
+                            <li><a href="UsersServlet?command=logout">Logout</a> </li>
+                                <% }%><% else {%>
+                            <li  ><a href="login.jsp">Log in</a> </li>
+                            <li  ><a href="register.jsp">Register</a> </li>
+                                <%}%>
+
                             <li><div class="cart">
                                     <a href="#" class="cart-in"> </a>
                                     <span><%=cart.countItem()%></span>
@@ -68,9 +69,9 @@
                                         <%for (Map.Entry<Long, Item> list : cart.getCartItems().entrySet()) {%>
                                         <div class="cart_box">
                                             <div class="message">
-                                                <!--                                                    <div class="alert-close"> </div> -->
+                                                <div class="alert-close"><a href="CartServlet?command=remove&productID=<%=list.getKey()%>"></a> </div> 
                                                 <div class="list_img"><img src="<%=list.getValue().getProduct().getProductImage()%>" class="img-responsive" alt=""></div>
-                                                <div class="list_desc"><h4><a href="CartServlet?command=remove&productID=<%=list.getKey()%>"><%=list.getValue().getProduct().getProductName()%></a></h4>
+                                                <div class="list_desc"><h4><a href="single.jsp?productID=<%=list.getKey()%>"><%=list.getValue().getProduct().getProductName()%></a></h4>
                                                     <%=list.getValue().getQuantity()%> x<span class="actual"> $<%=list.getValue().getProduct().getProductPrice()%></span>
                                                 </div>
                                                 <div class="clearfix"></div>
@@ -102,7 +103,7 @@
                     <a class="toggleMenu" href="#">Menu</a>
                     <ul class="nav">
                         <li class="active"><a href="index.jsp"><i> </i>Desktops</a></li>
-                        <li ><a href="#" >Danh muc</a>
+                        <li ><a href="#" >Categories</a>
                             <ul class="drop">
                                 <%
                                     for (Category c : categoryDao.getListCategory()) {
@@ -113,11 +114,11 @@
                                     %>
                             </ul>
                         </li> 						
-                        <li><a href="products.html" >  Tablets</a></li>            
-                        <li><a href="products.html" >Components</a></li>						  				 
-                        <li><a href="products.html" >Software</a></li>
-                        <li><a href="products.html" >Phones & PDAs </a></li>
-                        <li><a href="products.html" >  Cameras  </a></li>
+                        <li><a href="#" >  Tablets</a></li>            
+                        <li><a href="#" >Components</a></li>						  				 
+                        <li><a href="#" >Software</a></li>
+                        <li><a href="#" >Phones & PDAs </a></li>
+                        <li><a href="#" >  Cameras  </a></li>
                         <li><a href="contact.jsp" >Contact </a></li>
 
                     </ul>
@@ -128,9 +129,16 @@
         <div class="header-bottom-in">
             <div class="container">
                 <div class="header-bottom-on">
+                    <%if (users == null) {%>
                     <p class="wel"><a href="#">Welcome visitor you can login or create an account.</a></p>
+                    <% } else {%>
+                    <p class="wel"><a href="#">Welcome back,<b> <%=users.getUserEmail()%></b></a></p>
+                    <%
+                        }
+                        %>
                     <div class="header-can">
                         <ul class="social-in">
+                            
                             <li><a href="#"><i> </i></a></li>
                             <li><a href="#"><i class="facebook"> </i></a></li>
                             <li><a href="#"><i class="twitter"> </i></a></li>					
@@ -146,8 +154,8 @@
                         <div class="search">
                             <form>
                                 <input type="text" value="Search" onfocus="this.value = '';" onblur="if (this.value == '') {
-                                                this.value = '';
-                                            }" >
+                                            this.value = '';
+                                        }" >
                                 <input type="submit" value="">
                             </form>
                         </div>

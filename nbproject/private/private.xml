@@ -3,19 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/nhtoa/Documents/NetBeansProjects/Shop/src/java/dao/UsersDAO.java</file>
-            <file>file:/C:/Users/nhtoa/Documents/NetBeansProjects/Shop/src/java/dao/BillDAO.java</file>
-            <file>file:/C:/Users/nhtoa/Documents/NetBeansProjects/Shop/src/java/controller/CheckEmailServlet.java</file>
-            <file>file:/C:/Users/nhtoa/Documents/NetBeansProjects/Shop/web/admin/update_category.jsp</file>
-            <file>file:/C:/Users/nhtoa/Documents/NetBeansProjects/Shop/src/java/controller/CheckOutServlet.java</file>
-            <file>file:/C:/Users/nhtoa/Documents/NetBeansProjects/Shop/src/java/controller/ManagerCategoryServlet.java</file>
-            <file>file:/C:/Users/nhtoa/Documents/NetBeansProjects/Shop/src/java/dao/CategoryDAO.java</file>
-            <file>file:/C:/Users/nhtoa/Documents/NetBeansProjects/Shop/web/admin/menu.jsp</file>
-            <file>file:/C:/Users/nhtoa/Documents/NetBeansProjects/Shop/web/admin/manager_product.jsp</file>
-            <file>file:/C:/Users/nhtoa/Documents/NetBeansProjects/Shop/web/admin/manager_bill.jsp</file>
-            <file>file:/C:/Users/nhtoa/Documents/NetBeansProjects/Shop/web/admin/manager_category.jsp</file>
-            <file>file:/C:/Users/nhtoa/Documents/NetBeansProjects/Shop/src/java/controller/UsersServlet.java</file>
-            <file>file:/C:/Users/nhtoa/Documents/NetBeansProjects/Shop/web/admin/insert_category.jsp</file>
+            <file>file:/C:/Users/nhtoa/Documents/NetBeansProjects/Shop/src/java/connect/DBConnect.java</file>
             <file>file:/C:/Users/nhtoa/Documents/NetBeansProjects/Shop/src/java/controller/CartServlet.java</file>
         </group>
     </open-files>

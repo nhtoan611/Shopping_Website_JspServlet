@@ -4,6 +4,8 @@
     Author     : nhtoan
 --%>
 
+<%@page import="model.Product"%>
+<%@page import="dao.ProductDao"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -12,64 +14,33 @@
         <title>content</title>
     </head>
     <body>
+        <%
+            ProductDao productDAO = new ProductDao();
+        %>
         <div class="container">
             <div class="content">
                 <div class="content-top">
                     <h3 class="future">FEATURED</h3>
                     <div class="content-top-in">
+                        <%
+                            for (Product p : productDAO.getProductByPrice()) {
+                        %>
                         <div class="col-md-3 md-col">
                             <div class="col-md">
-                                <a href="single.html"><img  src="images/pi.jpg" alt="" /></a>	
-                                <div class="top-content">
-                                    <h5><a href="single.html">Mascot Kitty - White</a></h5>
-                                    <div class="white">
-                                        <a href="single.html" class="hvr-shutter-in-vertical hvr-shutter-in-vertical2 ">ADD TO CART</a>
-                                        <p class="dollar"><span class="in-dollar">$</span><span>2</span><span>0</span></p>
-                                        <div class="clearfix"></div>
-                                    </div>
 
-                                </div>							
-                            </div>
-                        </div>
-                        <div class="col-md-3 md-col">
-                            <div class="col-md">
-                                <a href="single.html"><img  src="images/pi1.jpg" alt="" />	</a>
+                                <a href="single.jsp?productID=<%=p.getProductID()%>"><img  src="<%=p.getProductImage()%>" alt="" /></a>	
                                 <div class="top-content">
-                                    <h5><a href="single.html">Bite Me</a></h5>
+                                    <h5><a href="single.jsp?productID=<%=p.getProductID()%>"><%=p.getProductName()%></a></h5>
                                     <div class="white">
-                                        <a href="single.html" class="hvr-shutter-in-vertical hvr-shutter-in-vertical2">ADD TO CART</a>
-                                        <p class="dollar"><span class="in-dollar">$</span><span>3</span><span>0</span></p>
+                                        <a href="CartServlet?command=plus&productID=<%=p.getProductID()%>" class="hvr-shutter-in-vertical hvr-shutter-in-vertical2 ">ADD TO CART</a>
+                                        <p class="dollar"><span class="in-dollar">$</span><span><%=p.getProductPrice()%></span></p>
                                         <div class="clearfix"></div>
                                     </div>
-                                </div>							
+                                </div>
+
                             </div>
                         </div>
-                        <div class="col-md-3 md-col">
-                            <div class="col-md">
-                                <a href="single.html"><img  src="images/pi2.jpg" alt="" /></a>	
-                                <div class="top-content">
-                                    <h5><a href="single.html">Little Fella</a></h5>
-                                    <div class="white">
-                                        <a href="single.html" class="hvr-shutter-in-vertical hvr-shutter-in-vertical2">ADD TO CART</a>
-                                        <p class="dollar"><span class="in-dollar">$</span><span>5</span><span>0</span></p>
-                                        <div class="clearfix"></div>
-                                    </div>
-                                </div>							
-                            </div>
-                        </div>
-                        <div class="col-md-3 md-col">
-                            <div class="col-md">
-                                <a href="single.html"><img  src="images/pi3.jpg" alt="" /></a>	
-                                <div class="top-content">
-                                    <h5><a href="single.html">Astral Cruise</a></h5>
-                                    <div class="white">
-                                        <a href="single.html" class="hvr-shutter-in-vertical hvr-shutter-in-vertical2">ADD TO CART</a>
-                                        <p class="dollar"><span class="in-dollar">$</span><span>4</span><span>5</span></p>
-                                        <div class="clearfix"></div>
-                                    </div>
-                                </div>							
-                            </div>
-                        </div>
+                        <% }%>
                         <div class="clearfix"></div>
                     </div>
                 </div>
@@ -117,7 +88,7 @@
                 </div>
                 <!---->
                 <div class="content-bottom">
-                    <h3 class="future">LATEST</h3>
+                    <h3 class="future">NOT FINISH</h3>
                     <div class="content-bottom-in">
                         <ul id="flexiselDemo2">			
                             <li><div class="col-md men">
