@@ -33,17 +33,17 @@
             <jsp:include page="menu.jsp"></jsp:include>
 
                 <div id="rightContent">
-                    <h3>Quản lý hóa đơn</h3>
+                    <h3>Manager bill</h3>
 
                     <table class="data">
                         <tr class="data">
-                            <th class="data" width="30px">Mã hóa đơn</th>
-                            <th class="data">Khách hàng</th>
-                            <th class="data">Tổng hóa đơn</th>
-                            <th class="data">Thanh toán</th>
-                            <th class="data">Địa chỉ giao hàng</th>
-                            <th class="data">Ngày mua</th>
-                            <th class="data" width="120px">Tùy chọn</th>
+                            <th class="data" width="30px">Bill id</th>
+                            <th class="data">User id</th>
+                            <th class="data">Total</th>
+                            <th class="data">Method</th>
+                            <th class="data">Address</th>
+                            <th class="data">Date</th>
+                            <th class="data" width="120px">Options</th>
                         </tr>
                         
                         <%for(Bill bill : listBill){%>
@@ -56,8 +56,8 @@
                             <td class="data"><%=bill.getDate()%></td>
                             <td class="data" width="120px">
                                 <center>
-                                    <a href="#">Xác nhận </a>&nbsp;&nbsp; | &nbsp;&nbsp;
-                                    <a href="#">Hủy</a>
+                                    <a href="#">Confirm</a>&nbsp;&nbsp; | &nbsp;&nbsp;
+                                    <a href="#">Delete</a>
                                 </center>
                             </td>
                         </tr>

@@ -75,7 +75,7 @@
                     <div class="clearfix"></div>
                 </div>
             </div>
-            <p class="footer-class">Copyright © 2015 Modern Template by  <a href="http://w3layouts.com/" target="_blank">W3layouts</a> </p>
+            <p class="footer-class">Made by  <a href="http://fb.com/nhtoan611" target="_blank">Toàn</a> </p>
             <script type="text/javascript">
                 $(document).ready(function () {
                     /*

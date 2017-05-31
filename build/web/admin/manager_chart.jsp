@@ -56,7 +56,13 @@
 
                 <div id="rightContent">
 
-                    <h3>Thống kê danh mục sản phẩm</h3>
+                    <h3>not finish</h3>
+                    <p><%=request.getParameter("listItem") %></p>
+                <%
+                    
+//                    ArrayList<Value> v= (ArrayList<Value>) request.getParameter("listItem");
+                    
+                    %>
 
                     <table class="data">
 

@@ -32,6 +32,7 @@ public class ChartDAO {
             Logger.getLogger(ChartDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
+        
     }
 
     public static void main(String[] args) {

@@ -16,11 +16,11 @@
     <body>
         <div id="leftBar">
             <ul>
-                <li><a href="${root}/Shop/admin/index.jsp">Trang chủ</a></li>
-                <li><a href="${root}/Shop/admin/manager_category.jsp">Danh mục</a></li>
-                <li><a href="${root}/Shop/admin/manager_product.jsp">Sản phẩm</a></li>
-                <li><a href="${root}/Shop/admin/manager_bill.jsp">Hóa đơn</a></li>
-                <li><a href="${root}/Shop/admin/manager_chart.jsp">Biểu đồ </a></li>
+                <li><a href="${root}/Shop/admin/index.jsp">Homepage</a></li>
+                <li><a href="${root}/Shop/admin/manager_category.jsp">Category</a></li>
+                <li><a href="${root}/Shop/admin/manager_product.jsp">Product</a></li>
+                <li><a href="${root}/Shop/admin/manager_bill.jsp">Bill</a></li>
+                <li><a href="${root}/Shop/admin/manager_chart.jsp">Chart  </a></li>
             </ul>
         </div>
     </body>

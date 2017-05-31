@@ -13,7 +13,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Quản lí danh mục</title>
+        <title>Categories manage</title>
         <c:set var="root" value="${pageContext.request.contextPath}"/>
         <link href="${root}/css/mos-style.css" rel='stylesheet' type='text/css' />
     </head>
@@ -29,9 +29,9 @@
             <jsp:include page="menu.jsp"></jsp:include>
 
                 <div id="rightContent">
-                    <h3>Quản lí danh mục</h3>
+                    <h3>Categories manage</h3>
                     <hr>
-                    <a href="${root}/admin/insert_category.jsp">Thêm mới danh mục</a>
+                    <a href="${root}/admin/insert_category.jsp">add new category</a>
                     <table class="data">
                         <tr class="data">
                             <th class="data" width="30px">STT</th>

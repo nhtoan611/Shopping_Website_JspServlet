@@ -51,7 +51,7 @@ public class UsersDAO {
     //Kiem tra dang nhap
     public Users login(String email, String password) {
         Connection con = DBConnect.getConnection();
-        String sql = "select * from users where user_email='" + email + "' and user_pass='" + password + "'";
+        String sql = "select * from users where user_email='" + email + "' and user_pass='" + password + "' and user_role=0";
         PreparedStatement ps;
         try {
             ps = (PreparedStatement) con.prepareStatement(sql);
