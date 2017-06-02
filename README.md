@@ -1,5 +1,34 @@
 # Shopping_Website_JspServlet
-Demo Shopping Website Using Jsp&Servlet
+JSPとSERVLET(サーブレット)でショッピングウェブサイトを開発しました。
 ------------------------------------------------
-AM 2:10 Everything done ^^
-http://node43330-nhtoan611.jelastic.skali.net/Shop/index.jsp
+AM 2:10 27.5
+http://nhtoan611.jelastic.skali.net/Shop/
+http://nhtoan611.jelastic.skali.net/Shop/admin/index.jsp
+------------------------------------------------
+
+＊完成した機能：
+
+１、ユーザページ
+ログイン、ログアウト
+連絡方法
+カテゴリーをわかれる
+商品画面、連関商品、一番安い商品
+商品を買う
+メールを送れる
+Facebookでコメント
+Adminとチャット
+
+2、管理者ページ
+カテゴリー管理
+ビル管理
+
+＊将来機能
+
+１、ユーザページ
+データベースを追加する
+イメージのサイズを調整する
+
+2、管理者ページ
+ログイン、ログアウト
+商品のイメージのサイズ
+チャートを作る
