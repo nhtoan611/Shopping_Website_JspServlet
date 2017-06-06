@@ -15,6 +15,7 @@ http://nhtoan611.jelastic.skali.net/Shop/admin/
 * メール送信
 * Facebookコメント
 * 管理者をチャットする
+* ページネーション
 
 2、管理者ページ
 
