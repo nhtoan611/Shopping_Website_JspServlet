@@ -18,11 +18,11 @@ public class DBConnect {
         Connection conn=null;
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            String URL="jdbc:mysql://node43329-nhtoan611.jelastic.skali.net/shop";
-            String username="user";
-            String password="BeN369uXMwn35jGP";
-            conn=DriverManager.getConnection(URL,username,password);
-//conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/shop", "root", "0969220842");
+//            String URL="jdbc:mysql://node43329-nhtoan611.jelastic.skali.net/shop";
+//            String username="user";
+//            String password="BeN369uXMwn35jGP";
+//            conn=DriverManager.getConnection(URL,username,password);
+conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/shop", "root", "0969220842");
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -34,7 +34,24 @@ public class ProductDao {
         }
         return list;
     }
-
+    public ArrayList<Product> getListProductByName(String search_name) throws SQLException{
+       Connection connection = DBConnect.getConnection();
+        String sql = "SELECT * FROM product WHERE product_name LIKE '%"+search_name+"%'";
+        PreparedStatement ps = connection.prepareCall(sql);
+        ResultSet rs = ps.executeQuery();
+        ArrayList<Product> list = new ArrayList<>();
+        while (rs.next()) {
+            Product product = new Product();
+            product.setProductID(rs.getLong("product_id"));
+            product.setProductName(rs.getString("product_name"));
+            product.setProductImage(rs.getString("product_image"));
+            product.setProductPrice(rs.getDouble("product_price"));
+            product.setProductDesription(rs.getString("product_description"));
+            product.setCategoryID(rs.getLong("category_id"));
+            list.add(product);
+        }
+        return list;
+    }
     //hien thi chi tiet san pham
     public Product getProduct(long productID) throws SQLException {
         Connection connection = DBConnect.getConnection();
@@ -124,8 +141,8 @@ public class ProductDao {
     public static void main(String[] args) throws SQLException {
         ProductDao dao = new ProductDao();
         
-        for(Product p:dao.getListProductByCategoryLimit(2,2)){
-            System.out.println(p.getProductID()+"   "+p.getProductName()+"   "+p.getProductDesription()+"  "+p.getProductPrice());
+        for(Product p:dao.getListProductByName(Integer.toString(2))){
+            System.out.println(p.getProductID()+"   "+p.getProductName()+"   "+p.getProductDesription()+"  "+p.getProductPrice()+"  "+p.getCategoryID()+"   "+p.getProductImage());
         }
 //        System.out.println(dao.countProductByCategory(3));
     }

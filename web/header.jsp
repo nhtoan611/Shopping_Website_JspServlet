@@ -135,10 +135,10 @@
                     <p class="wel"><a href="#">Welcome back,<b> <%=users.getUserEmail()%></b></a></p>
                     <%
                         }
-                        %>
+                    %>
                     <div class="header-can">
                         <ul class="social-in">
-                            
+
                             <li><a href="#"><i> </i></a></li>
                             <li><a href="#"><i class="facebook"> </i></a></li>
                             <li><a href="#"><i class="twitter"> </i></a></li>					
@@ -152,10 +152,10 @@
                             </select>
                         </div>
                         <div class="search">
-                            <form>
-                                <input type="text" value="Search" onfocus="this.value = '';" onblur="if (this.value == '') {
-                                            this.value = '';
-                                        }" >
+                            <form action="../Shop/search.jsp">
+                                <input type="text" name="search_name" onfocus="this.value = '';" onblur="if (this.value == '') {
+                                                                    this.value = '';
+                                                                }">
                                 <input type="submit" value="">
                             </form>
                         </div>
