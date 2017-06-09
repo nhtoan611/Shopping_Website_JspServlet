@@ -16,6 +16,7 @@ http://nhtoan611.jelastic.skali.net/Shop/admin/
 * Facebookコメント
 * 管理者をチャットする
 * ページネーション
+* 商品を探します
 
 2、管理者ページ
 
@@ -29,7 +30,6 @@ http://nhtoan611.jelastic.skali.net/Shop/admin/
 
 * データベースを追加
 * イメージのサイズを調整する
-* 商品を探します
 
 2、管理者ページ
 

@@ -68,7 +68,7 @@
             });
         </script>
     </head>
-    <body>
+    
         <%
             String search_name = "";
             if (request.getParameter("search_name") != null) {
@@ -78,16 +78,17 @@
             ArrayList<Product> listProduct = productDAO.getListProductByName(search_name);
         %>
         <jsp:include page="header.jsp"></jsp:include>
+        <%
+            if(listProduct.size()<=4){
+        %>
+        <div class="container">
+            <div class="products">
+                <h2 class=" products-in">Search result</h2>
 
-            <div class="container">
-                <div class="products">
-                    <h2 class=" products-in">Search result</h2>
 
+                <div class="top-products">
 
-                    <div class="top-products">
-
-                    <%
-                        for (Product p : listProduct) {
+                    <%                        for (Product p : listProduct) {
                     %>
                     <div class="col-md-3 md-col">
                         <div class="col-md">
@@ -109,7 +110,65 @@
                 </div>
             </div>
         </div>
+                    <% }else{ %>
 
+
+        <div class="container">
+            <div class="content">
+                <div class="content-bottom">
+                    <h2 class=" products-in">Search result</h2>
+                    <div class="content-bottom-in">
+                        <ul id="flexiselDemo2">	
+                            <%
+                                for (Product p : listProduct) {
+                            %>
+                            <li><div class="col-md men">
+                                    <a href="single.jsp?productID=<%=p.getProductID()%>"><img  src="<%=p.getProductImage()%>" alt="<%=p.getProductName()%>" /></a>
+                                    <div class="top-content bag">
+                                        <h5><a href="single.jsp?productID=<%=p.getProductID()%>"><%=p.getProductName()%></a></h5>
+                                        <div class="white">
+                                            <a href="CartServlet?command=plus&productID=<%=p.getProductID()%>" class="hvr-shutter-in-vertical hvr-shutter-in-vertical2 ">ADD TO CART</a>
+                                            <p class="dollar"><span class="in-dollar">$</span><span><%=p.getProductPrice()%></span></p>
+                                            <div class="clearfix"></div>
+                                        </div>
+                                    </div>							
+                                </div></li>
+                                <% }%>
+                        </ul>
+                        <script type="text/javascript">
+                            $(window).load(function () {
+                                $("#flexiselDemo2").flexisel({
+                                    visibleItems: 4,
+                                    animationSpeed: 1000,
+                                    autoPlay: true,
+                                    autoPlaySpeed: 3000,
+                                    pauseOnHover: true,
+                                    enableResponsiveBreakpoints: true,
+                                    responsiveBreakpoints: {
+                                        portrait: {
+                                            changePoint: 480,
+                                            visibleItems: 1
+                                        },
+                                        landscape: {
+                                            changePoint: 640,
+                                            visibleItems: 2
+                                        },
+                                        tablet: {
+                                            changePoint: 768,
+                                            visibleItems: 3
+                                        }
+                                    }
+                                });
+
+                            });
+                        </script>
+                        <script type="text/javascript" src="js/jquery.flexisel.js"></script>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+                        <%}%>
         <jsp:include page="footer.jsp"></jsp:include>
-    </body>
+    
 </html>
