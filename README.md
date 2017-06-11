@@ -1,8 +1,8 @@
 # Shopping_Website_JspServlet
 JSPとSERVLET(サーブレット)でショッピングウェブサイトを開発しました。
 
-http://nhtoan611.jelastic.skali.net/Shop/
-http://nhtoan611.jelastic.skali.net/Shop/admin/
+http://nhtoan.jelastic.skali.net/Shop/
+http://nhtoan.jelastic.skali.net/Shop/admin/
 ------------------------------------------------
 
 # 完成した機能：
